@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Air Mechanical Solutions provides expert HVAC and mechanical engineering services for commercial and industrial clients.">
+  <title>Air Mechanical Solutions</title>
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="./assets/js/color-modes.js"></script>
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+
+  <!-- Chatbot -->
+  <link rel="stylesheet" href="./assets/css/chatbot.css">
+
+
+  <style>
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Nunito Regular', sans-serif;
+    }
+    .hero {
+        background: rgba(0,0,0,0.5);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-image: url(../images/commercial-header-image.jpg);
+        background-size: cover;
+        background-position: center;
+
+    }
+    .card {
+        background: rgba(255,255,255,0.1);
+        border: none;
+        backdrop-filter: blur(10px);
+        /* color: var(--white); */
+    }
+    .btn-custom {
+        background-color: var(--primary-color);
+        border: none;
+        color: var(--white);
+        transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover {
+        background-color: var(--primary-color-hover);
+        color: var(--white);
+    }
+    .supplier-logo-container {
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        padding: 20px;
+        width: 200px;
+        margin: 0 auto;
+      }
+    .featured-image {
+        position: relative;
+        overflow: hidden;
+    }
+    .featured-image img {
+        transition: transform 0.5s ease;
+    }
+    .featured-image:hover img {
+        transform: scale(1.05);
+    }
+    .featured {
+        position: relative;
+    }
+    .featured::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(0,45,93,0.1) 0%, rgba(0,152,69,0.1) 100%);
+        z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo" aria-label="Home">
+      <img src="./assets/ams-logo/5c5daec68bcb8009104f2477_Asset 1.svg" alt="Air Mechanical Solutions logo">
+    </a>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="navbar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Solutions ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="./assets/pages/education.html">Education</a></li>
+            <li><a href="./assets/pages/technology.html">Technology</a></li>
+            <li><a href="./assets/pages/commercial.html">Commercial</a></li>
+          </ul>
+        </li>
+        <li><a href="./assets/pages/contact-us.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video id="hero-video" autoplay muted loop playsinline poster="assets/image-samples/Screenshot 2026-03-07 151644.png">
+      <source src="./assets/videos/air-mechanical-solutions-vid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <p>Precision Climate Control for <span>Commercial, Education, and Technology Industries</span></p>
+      <img src="./assets/ams-logo/5c5daec68bcb8009104f2477_Asset 1.svg" alt="Air Mechanical Solutions Logo" class="hero-logo">
+    </div>
+  </section>
+
+  
+
+
+
+  <section id="about" class="section">
+    <h2 class="fw-bold" style="font-size: 30px;">Industry Expertise You Can Trust</h2>
+    <br>
+    <p>Since 2002, our team has helped organizations implement dependable climate control solutions for demanding environments. With more than a century of combined HVAC experience, we provide knowledgeable guidance, responsive service, and systems built for long-term performance.</p>
+    <br>
+    <p>We partner with leading manufacturers to deliver innovative equipment and proven technologies that meet the evolving needs of modern facilities.</p>
+    <br>
+    <p>At Air Mechanical Solutions, we provide advanced heating, cooling, and ventilation systems that keep mission-critical environments running smoothly. From classrooms and commercial buildings to telecommunications shelters and equipment rooms, our team delivers dependable climate control solutions engineered for performance, efficiency, and long-term reliability.</p>
+    <br>
+    <p>With decades of industry expertise and trusted manufacturing partners, we help organizations create comfortable, energy-efficient environments where people and technology can thrive.</p>
+    <img src="./assets/images/mobile-logo-transparent-bg.png" alt="Chat icon" style="margin: 30px auto 0; width: 70px;" />
+  </section>
+
+  <!-- Featured Mobile Showroom -->
+    <section id="featured" class="featured py-5 bg-white text-dark">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h2 class="fw-bold" style="font-size: 30px;">Mobile HVAC Showroom</h2>
+                    <h2 class="fw-bold mb-4">Experience Advanced HVAC Solutions - Delivered to You</h2>
+                    <p class="lead mb-4">Discover the latest in climate control technology firsthand. Our mobile showroom brings cutting-edge HVAC solutions directly to you, showcasing products from our trusted suppliers in a fully equipped, interactive environment.</p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Live demonstrations of advanced systems</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Expert consultations and personalized advice</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Hands-on experience with the latest innovations</li>
+                    </ul>
+                    <a href="./assets/pages/mobile-showroom.html" class="btn btn-custom btn-lg">Schedule a Visit</a>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="featured-image">
+                        <img src="./assets/images/mobile-showroom/mobile-showroom-06.jpeg" alt="Mobile Showroom" class="img-fluid rounded shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Solutions -->
+    <section id="solutions" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" style="font-size: 30px;" data-aos="fade-up">Our Solutions</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-right">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Reliable HVAC Systems for Schools and Learning Environments</h5>
+                            <p class="card-text">Comfortable classrooms support better learning. We deliver HVAC solutions specifically designed for schools, universities, and institutional facilities. Our systems provide efficient heating, cooling, ventilation, and humidity control to create healthy indoor environments for students and educators.</p>
+                            <br>
+                            <ul>
+                              <li>&bull;&nbsp;K-12 school buildings</li>
+                              <li>&bull;&nbsp;Colleges and universities</li>
+                              <li>&bull;&nbsp;Administrative and campus facilities</li>
+                            </ul>
+                            <br>
+                            <p class="card-text">Whether upgrading aging equipment or designing a new system, we help educational institutions maintain consistent comfort and energy efficiency year-round.</p>
+                            <br>
+                            <a href="#" class="btn btn-custom">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Precision Cooling for Technology<br> Infrastructure</h5>
+                            <p class="card-text">Technology environments require precise and dependable climate control. We provide specialized cooling systems designed to protect sensitive equipment and ensure continuous operation.</p>
+                            <br>
+                            <h5 class="card-title fw-bold">Our solutions support:</h5>
+                            <ul>
+                              <li>&bull;&nbsp;Telecommunications shelters</li>
+                              <li>&bull;&nbsp;Data and network infrastructure</li>
+                              <li>&bull;&nbsp;Electrical switchgear and control rooms</li>
+                              <li>&bull;&nbsp;Industrial equipment environments</li>
+                            </ul>
+                            <br>
+                            <p class="card-text">With intelligent system design and reliable equipment, we help prevent overheating, downtime, and costly interruptions.</p>
+                            <br>
+                            <a href="#" class="btn btn-custom">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-left">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Flexible HVAC Solutions for Complex Commercial Projects</h5>
+                            <p class="card-text">Commercial facilities present unique challenges—from limited installation space to complex replacement projects. Our team provides tailored HVAC systems designed to solve those challenges while maximizing efficiency and reliability.</p>
+                            <p class="card-text">We work with engineers, contractors, and facility managers to deliver solutions for</p>
+                            <br>
+                            <ul>
+                              <li>&bull;&nbsp;Office buildings</li>
+                              <li>&bull;&nbsp;Industrial facilities</li>
+                              <li>&bull;&nbsp;Retrofit and replacement projects</li>
+                              <li>&bull;&nbsp;Specialized mechanical environments</li>
+                            </ul>
+                            <br>
+                            <p class="card-text">No matter the complexity of the project, we deliver systems that perform.</p>
+                            <br>
+                            <a href="#" class="btn btn-custom">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suppliers -->
+    <section id="suppliers" class="py-5 bg-white text-dark">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" style="font-size: 30px;" data-aos="fade-up">Our Suppliers</h2>
+            <div class="row g-4 justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos/Bard_logo_New-p-500.png" alt="Bard" class="supplier-logo img-fluid mb-3">
+                </div>
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos//Delta Cooling Towers Logo-p-500.png" alt="Delta Cooling" class="supplier-logo img-fluid mb-3">
+                </div>
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos/UVRLogo.jpg" alt="UVR" class="supplier-logo img-fluid mb-3">
+                </div>
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos//FujitsuLogo.png" alt="Fujitsu" class="supplier-logo img-fluid mb-3">
+                </div>
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos/geocomfort_logo-p-500.jpeg" alt="GeoComort" class="supplier-logo img-fluid mb-3">
+                </div>
+                <hr style="visibility: hidden;">
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos//Hydro.png" alt="Hydro-Temp" class="supplier-logo img-fluid mb-3">
+                </div>
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos//REZNOR.png" alt="Reznor" class="supplier-logo img-fluid mb-3">
+                </div>
+                <div class="col-6 col-md-3 text-center supplier-logo-container">
+                    <img src="./assets/images/supplier-logos/UCA Logo-p-500.png" alt="United Cool Air" class="supplier-logo img-fluid mb-3">
+                </div>
+            </div>
+            <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="btn btn-custom">Request A Quote</a>
+            </div>
+        </div>
+    </section>
+  <div class="footer-wrapper">
+    <footer class="py-5">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Nav</h5>
+          <ul class="nav flex-column">
+            <li class="mb-2">
+              <a href="#" class="p-0">Home</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">Features</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">Pricing</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">FAQs</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Mobile Showroom</h5>
+          <ul class="nav flex-column">
+            <li class="mb-2">
+              <a href="#" class="p-0">Home</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">Features</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">Pricing</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">FAQs</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="mb-2">
+              <a href="#" class="p-0">Home</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">Features</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">Pricing</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">FAQs</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="p-0">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of what's new and exciting from us.</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden"
+                >Email address</label
+              >
+              <input
+                id="newsletter1"
+                type="email"
+                class="form-control"
+                placeholder="Email address"
+              />
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+        <p>&copy; 2026 Air Mechanical Solutions. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="link-body-emphasis" href="#" aria-label="Instagram"><svg class="bi" width="24" height="24">
+                <use xlink:href="#instagram"></use></svg></a>
+          </li>
+          <li class="ms-3">
+            <a class="link-body-emphasis" href="#" aria-label="Facebook">
+              <svg class="bi" width="24" height="24" aria-hidden="true">
+                <use xlink:href="#facebook"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Chatbot Toggle Button -->
+  <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chat">
+    <img src="./assets/images/mobile-logo-transparent-bg.png" alt="Chat icon" class="chatbot-toggle__icon" />
+    <p>Chat</p>
+  </button>
+  <!-- Chatbot Container -->
+  <div id="faq-chatbot" class="chatbot-closed"></div>
+
+
+  <script src="./assets/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/chatbot.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
