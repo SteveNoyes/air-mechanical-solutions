@@ -1,0 +1,565 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraLight';
+  src: url('../fonts/Nunito-ExtraLightItalic.woff2') format('woff2'),
+      url('../fonts/Nunito-ExtraLightItalic.woff') format('woff'),
+      url('../fonts/Nunito-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Italic';
+  src: url('../fonts/Nunito-Italic.woff2') format('woff2'),
+      url('../fonts/Nunito-Italic.woff') format('woff'),
+      url('../fonts/Nunito-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Light';
+  src: url('../fonts/Nunito-Light.woff2') format('woff2'),
+      url('../fonts/Nunito-Light.woff') format('woff'),
+      url('../fonts/Nunito-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Light Italic';
+  src: url('../fonts/Nunito-LightItalic.woff2') format('woff2'),
+      url('../fonts/Nunito-LightItalic.woff') format('woff'),
+      url('../fonts/Nunito-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Medium';
+  src: url('../fonts/Nunito-Medium.woff2') format('woff2'),
+      url('../fonts/Nunito-Medium.woff') format('woff'),
+      url('../fonts/Nunito-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Medium Italic';
+  src: url('../fonts/Nunito-MediumItalic.woff2') format('woff2'),
+      url('../fonts/Nunito-MediumItalic.woff') format('woff'),
+      url('../fonts/Nunito-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Regular';
+  src: url('../fonts/Nunito-Regular.woff2') format('woff2'),
+      url('../fonts/Nunito-Regular.woff') format('woff'),
+      url('../fonts/Nunito-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito SemiBold';
+  src: url('../fonts/Nunito-SemiBold.woff2') format('woff2'),
+      url('../fonts/Nunito-SemiBold.woff') format('woff'),
+      url('../fonts/Nunito-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito SemiBold Italic';
+  src: url('../fonts/Nunito-SemiBoldItalic.woff2') format('woff2'),
+      url('../fonts/Nunito-SemiBoldItalic.woff') format('woff'),
+      url('../fonts/Nunito-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Black';
+  src: url('../fonts/Nunito-Black.woff2') format('woff2'),
+      url('../fonts/Nunito-Black.woff') format('woff'),
+      url('../fonts/Nunito-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Black Italic';
+  src: url('../fonts/Nunito-BlackItalic.woff2') format('woff2'),
+      url('../fonts/Nunito-BlackItalic.woff') format('woff'),
+      url('../fonts/Nunito-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Bold';
+  src: url('../fonts/Nunito-Bold.woff2') format('woff2'),
+      url('../fonts/Nunito-Bold.woff') format('woff'),
+      url('../fonts/Nunito-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Bold Italic';
+  src: url('../fonts/Nunito-BoldItalic.woff2') format('woff2'),
+      url('../fonts/Nunito-BoldItalic.woff') format('woff'),
+      url('../fonts/Nunito-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraBold';
+  src: url('../fonts/Nunito-ExtraBold.woff2') format('woff2'),
+      url('../fonts/Nunito-ExtraBold.woff') format('woff'),
+      url('../fonts/Nunito-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraBold Italic';
+  src: url('../fonts/Nunito-ExtraBoldItalic.woff2') format('woff2'),
+      url('../fonts/Nunito-ExtraBoldItalic.woff') format('woff'),
+      url('../fonts/Nunito-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraLight';
+  src: url('../fonts/Nunito-ExtraLight.woff2') format('woff2'),
+      url('../fonts/Nunito-ExtraLight.woff') format('woff'),
+      url('../fonts/Nunito-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --primary-color: #002d5d;
+  --primary-color-hover: #002d5dc7;
+  --secondary-color: #009845;
+  --background-color: #F8F9FA;
+  --text-color: #3f3f3f;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+/* Global typography and layout */
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header and navigation */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  /* background: rgba(255,255,255,0.25); */
+  backdrop-filter: blur(10px);
+}
+
+header .logo img {
+  height: 45px;
+  background-color: #f2f2f256;
+  padding: .8rem;
+  border-radius: 10px;
+}
+
+header nav {
+  padding-right: 3.5rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  padding: .45rem .75rem;
+  
+  border: 1px solid var(--white);
+  border-radius: 10px;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+  background-color: var(--white);
+  padding: .45rem .75rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+}
+
+nav ul li {
+  transition: all 0.2s ease-in-out;
+}
+
+nav ul li:hover {
+  transform: scale(1.05);
+}
+
+
+/* Navbar when scrolled */
+.scrolled a {
+  background-color: var(--primary-color) !important;
+  color: var(--white);
+}
+
+.scrolled a:hover {
+  background-color: var(--white) !important;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: transparent;
+  list-style: none;
+  min-width: 180px;
+  padding: 0;
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+.dropdown-menu li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-menu li a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  padding: .45rem .75rem;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  display: block;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+  color: var(--primary-color);
+  background-color: var(--white);
+  padding: .45rem .75rem;
+  border-radius: 10px;
+}
+
+/* Show dropdown when active */
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+/* Hero video section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+}
+
+.hero video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  /* max-width: 90%; */
+  /* width: 25%; */
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-left: 2rem;
+  margin-top: 20rem;
+  width: 520px;
+}
+
+.hero-content .hero-logo {
+  width: 100%;
+  max-width: 250px;
+  margin: 1.5rem auto 0;
+}
+
+.hero-content p {
+  font-size: 2rem;
+  font-family: 'Nunito Bold';
+}
+
+.hero-content p span {
+  font-family: 'Nunito ExtraBold Italic';
+}
+
+/* Sections */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section:nth-child(even) {
+  background: var(--white);
+}
+
+.section:nth-child(odd) {
+  background: var(--background-color);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+
+.footer-wrapper {
+  background-color: #3f3f3f;
+  color: var(--white);
+}
+
+footer {
+  padding: 4rem 2rem;
+  width: 90%;
+  margin: 0 auto;
+  color: var(--white);
+}
+
+footer {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* Responsive tweaks */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  gap: 0.4rem;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  header nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 45, 93, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 1rem 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  header nav.active {
+    max-height: 400px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  header {
+    padding: 0.75rem 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .dropdown-menu {
+    position: static;
+    background: rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    border-radius: 10px;
+  }
+
+  .dropdown-menu li {
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-content {
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
