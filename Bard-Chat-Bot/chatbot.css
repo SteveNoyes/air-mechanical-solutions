@@ -1,0 +1,375 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraLight';
+  src: url('./fonts/Nunito-ExtraLightItalic.woff2') format('woff2'),
+      url('./fonts/Nunito-ExtraLightItalic.woff') format('woff'),
+      url('./fonts/Nunito-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Italic';
+  src: url('./fonts/Nunito-Italic.woff2') format('woff2'),
+      url('./fonts/Nunito-Italic.woff') format('woff'),
+      url('./fonts/Nunito-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Light';
+  src: url('./fonts/Nunito-Light.woff2') format('woff2'),
+      url('./fonts/Nunito-Light.woff') format('woff'),
+      url('./fonts/Nunito-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Light Italic';
+  src: url('./fonts/Nunito-LightItalic.woff2') format('woff2'),
+      url('./fonts/Nunito-LightItalic.woff') format('woff'),
+      url('./fonts/Nunito-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Medium';
+  src: url('./fonts/Nunito-Medium.woff2') format('woff2'),
+      url('./fonts/Nunito-Medium.woff') format('woff'),
+      url('./fonts/Nunito-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Medium Italic';
+  src: url('./fonts/Nunito-MediumItalic.woff2') format('woff2'),
+      url('./fonts/Nunito-MediumItalic.woff') format('woff'),
+      url('./fonts/Nunito-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Regular';
+  src: url('./fonts/Nunito-Regular.woff2') format('woff2'),
+      url('./fonts/Nunito-Regular.woff') format('woff'),
+      url('./fonts/Nunito-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito SemiBold';
+  src: url('./fonts/Nunito-SemiBold.woff2') format('woff2'),
+      url('./fonts/Nunito-SemiBold.woff') format('woff'),
+      url('./fonts/Nunito-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito SemiBold Italic';
+  src: url('./fonts/Nunito-SemiBoldItalic.woff2') format('woff2'),
+      url('./fonts/Nunito-SemiBoldItalic.woff') format('woff'),
+      url('./fonts/Nunito-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Black';
+  src: url('./fonts/Nunito-Black.woff2') format('woff2'),
+      url('./fonts/Nunito-Black.woff') format('woff'),
+      url('./fonts/Nunito-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Black Italic';
+  src: url('./fonts/Nunito-BlackItalic.woff2') format('woff2'),
+      url('./fonts/Nunito-BlackItalic.woff') format('woff'),
+      url('./fonts/Nunito-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Bold';
+  src: url('./fonts/Nunito-Bold.woff2') format('woff2'),
+      url('./fonts/Nunito-Bold.woff') format('woff'),
+      url('./fonts/Nunito-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Bold Italic';
+  src: url('./fonts/Nunito-BoldItalic.woff2') format('woff2'),
+      url('./fonts/Nunito-BoldItalic.woff') format('woff'),
+      url('./fonts/Nunito-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraBold';
+  src: url('./fonts/Nunito-ExtraBold.woff2') format('woff2'),
+      url('./fonts/Nunito-ExtraBold.woff') format('woff'),
+      url('./fonts/Nunito-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraBold Italic';
+  src: url('./fonts/Nunito-ExtraBoldItalic.woff2') format('woff2'),
+      url('./fonts/Nunito-ExtraBoldItalic.woff') format('woff'),
+      url('./fonts/Nunito-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito ExtraLight';
+  src: url('./fonts/Nunito-ExtraLight.woff2') format('woff2'),
+      url('./fonts/Nunito-ExtraLight.woff') format('woff'),
+      url('./fonts/Nunito-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --primary-color: #002d5d;
+  --secondary-color: #009845;
+  --background-color: #F8F9FA;
+  --text-color: #3f3f3f;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+
+/* Basic styles for the FAQ chatbot widget */
+
+body {
+  font-family: 'Nunito Regular', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #005fa3;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.chatbot-toggle__icon {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.chatbot-toggle:hover {
+  outline: 1px solid #005fa3;
+}
+
+.bot-container {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 350px;
+  max-width: 90vw;
+  font-family: inherit;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  display: none; /* Hidden by default */
+}
+
+.chatbot-open .bot-container {
+  display: block;
+}
+
+.bot-header {
+  background: #007acc;
+  color: white;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bot-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.bot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bot-suggestions {
+  padding: 8px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.bot-suggestion {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  margin: 2px 0;
+  background: #e0f7fa;
+  border: none;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.bot-suggestion:hover {
+  background: #b2ebf2;
+}
+
+.bot-messages {
+  height: 250px;
+  overflow-y: auto;
+  padding: 8px;
+  background: #fafafa;
+}
+
+.bot-message {
+  margin: 4px 0;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.bot-message.user {
+  text-align: right;
+  background: #e0f7fa;
+}
+
+.bot-message.bot {
+  text-align: left;
+  background: #f1f8e9;
+}
+
+.bot-form {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.bot-form input[type="text"] {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.bot-form button {
+  border: none;
+  background: #007acc;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.bot-form button:hover {
+  background: #005fa3;
+}
