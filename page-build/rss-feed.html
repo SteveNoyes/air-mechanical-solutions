@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS News Feed - Trace Systems</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #0d6efd;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .rss-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 56px;
+        }
+
+        .rss-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .rss-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .rss-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .rss-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 0;
+            font-weight: 300;
+        }
+
+        /* Controls Section */
+        .controls-section {
+            background: white;
+            padding: 30px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 56px;
+            z-index: 100;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            border-radius: 50px;
+            padding: 12px 20px 12px 45px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .loading-indicator {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-bg);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Article Grid */
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+        }
+
+        .article-card:hover {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-8px);
+        }
+
+        .article-card-header {
+            padding: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 8px;
+        }
+
+        .article-card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .article-meta i {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .article-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: #222;
+            flex-grow: 1;
+        }
+
+        .article-card h3 a {
+            color: #222;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .article-card h3 a:hover {
+            color: var(--primary-color);
+        }
+
+        .article-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .read-more-btn:hover {
+            color: var(--accent-color);
+            gap: 12px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: #999;
+            margin: 0;
+        }
+
+        /* Error State */
+        .error-message {
+            background: #fee;
+            border: 2px solid #f99;
+            border-radius: 8px;
+            padding: 20px;
+            color: #c33;
+            display: none;
+            margin-bottom: 20px;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .error-message i {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        /* Footer Stats */
+        .feeds-footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .feeds-footer strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .rss-hero {
+                padding: 80px 0 60px;
+            }
+
+            .rss-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .rss-hero p {
+                font-size: 1.1rem;
+            }
+
+            .articles-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .controls-section {
+                position: static;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rss-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .article-card-content {
+                padding: 15px;
+            }
+
+            .article-card h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Trace Systems</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="rss-feed.html">News Feed</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="rss-hero">
+        <div class="container rss-hero-content">
+            <div data-aos="fade-up">
+                <h1><i class="bi bi-rss-fill"></i> Latest Industry News</h1>
+                <p>Stay informed with the latest updates from ACHR News</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls Section -->
+    <section class="controls-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="form-control" 
+                            placeholder="Search articles by title or description..."
+                        >
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <button id="refreshBtn" class="btn btn-primary btn-sm" title="Refresh feed">
+                        <i class="bi bi-arrow-clockwise"></i> Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage">
+            <i class="bi bi-exclamation-triangle"></i>
+            <span id="errorText">Failed to load articles. Please try again later.</span>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="loading-spinner"></div>
+            <p>Loading articles...</p>
+        </div>
+
+        <!-- Articles Container -->
+        <div class="articles-container" id="articles">
+            <!-- Articles will be loaded here -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="bi bi-inbox"></i>
+            <h3>No Articles Found</h3>
+            <p>Try adjusting your search terms or check back later for new articles.</p>
+        </div>
+    </main>
+
+    <!-- Footer Stats -->
+    <section class="feeds-footer">
+        <div class="container">
+            <p>Showing <strong id="articleCount">0</strong> articles from ACHR News Feed</p>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Configuration
+        // https://www.achrnews.com/rss/articles
+        // /api/news
+        const API_URL = '/api/news';
+        let allArticles = [];
+
+        // DOM Elements
+        const articlesContainer = document.getElementById('articles');
+        const searchInput = document.getElementById('searchInput');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const emptyState = document.getElementById('emptyState');
+        const articleCount = document.getElementById('articleCount');
+
+        /**
+         * Fetch news articles from the API
+         */
+        async function loadNews() {
+            try {
+                showLoading(true);
+                hideError();
+                articlesContainer.innerHTML = '';
+                emptyState.style.display = 'none';
+
+                const response = await fetch(API_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`API returned status ${response.status}`);
+                }
+
+                allArticles = await response.json();
+
+                if (allArticles.length === 0) {
+                    showEmptyState();
+                } else {
+                    displayArticles(allArticles);
+                    articleCount.textContent = allArticles.length;
+                }
+
+            } catch (err) {
+                console.error('Error loading news:', err);
+                showError(`Failed to load articles: ${err.message}`);
+                showEmptyState();
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        /**
+         * Display articles in the container
+         */
+        function displayArticles(articles) {
+            articlesContainer.innerHTML = '';
+            
+            articles.forEach((article, index) => {
+                const card = createArticleCard(article);
+                articlesContainer.appendChild(card);
+                
+                // Trigger AOS animation on new elements
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 100 * index);
+            });
+        }
+
+        /**
+         * Create an article card element
+         */
+        function createArticleCard(article) {
+            const card = document.createElement('div');
+            card.className = 'article-card';
+            card.setAttribute('data-aos', 'fade-up');
+            
+            const pubDate = new Date(article.pubDate);
+            const formattedDate = pubDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+
+            const description = article.description || 'No description available';
+            const truncatedDescription = description.substring(0, 150) + (description.length > 150 ? '...' : '');
+
+            card.innerHTML = `
+                <div class="article-card-header"></div>
+                <div class="article-card-content">
+                    <div class="article-meta">
+                        <i class="bi bi-calendar3"></i>
+                        <span>${formattedDate}</span>
+                    </div>
+                    <h3>
+                        <a href="${article.link}" target="_blank" rel="noopener noreferrer">
+                            ${article.title}
+                        </a>
+                    </h3>
+                    <p class="article-description">${truncatedDescription}</p>
+                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="read-more-btn">
+                        Read More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        /**
+         * Filter articles based on search input
+         */
+        function filterArticles() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            if (searchTerm === '') {
+                displayArticles(allArticles);
+                emptyState.style.display = 'none';
+                return;
+            }
+
+            const filtered = allArticles.filter(article =>
+                article.title.toLowerCase().includes(searchTerm) ||
+                (article.description && article.description.toLowerCase().includes(searchTerm))
+            );
+
+            if (filtered.length === 0) {
+                articlesContainer.innerHTML = '';
+                showEmptyState();
+            } else {
+                displayArticles(filtered);
+                emptyState.style.display = 'none';
+            }
+
+            articleCount.textContent = filtered.length;
+        }
+
+        /**
+         * Show loading indicator
+         */
+        function showLoading(show) {
+            loadingIndicator.style.display = show ? 'block' : 'none';
+        }
+
+        /**
+         * Show error message
+         */
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.add('show');
+        }
+
+        /**
+         * Hide error message
+         */
+        function hideError() {
+            errorMessage.classList.remove('show');
+        }
+
+        /**
+         * Show empty state
+         */
+        function showEmptyState() {
+            articlesContainer.innerHTML = '';
+            emptyState.style.display = 'block';
+        }
+
+        /**
+         * Debounce search input
+         */
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', debounce(filterArticles, 300));
+        refreshBtn.addEventListener('click', loadNews);
+
+        // Load articles on page load
+        document.addEventListener('DOMContentLoaded', loadNews);
+    </script>
+</body>
+</html>
